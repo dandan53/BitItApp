@@ -146,6 +146,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\DAL.cs" />
+    <Compile Include="Controllers\ItemController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\TodoController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -156,6 +159,8 @@
       <DependentUpon>201503051103137_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\ItemContext.cs" />
     <Compile Include="Models\Todo.cs" />
     <Compile Include="Models\TodoContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -224,6 +229,9 @@
     <Content Include="Global.asax" />
     <Content Include="index.html" />
     <Content Include="list.html" />
+    <Content Include="login.html" />
+    <Content Include="main.html" />
+    <Content Include="newbid.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
@@ -1026,6 +1034,7 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="signup.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

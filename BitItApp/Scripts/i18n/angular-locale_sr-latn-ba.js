@@ -23,13 +23,13 @@ $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
       "pre podne",
-      "po podne"
+      "popodne"
     ],
     "DAY": [
       "nedelja",
       "ponedeljak",
       "utorak",
-      "srijeda",
+      "sreda",
       "\u010detvrtak",
       "petak",
       "subota"
@@ -40,8 +40,8 @@ $provide.value("$locale", {
       "mart",
       "april",
       "maj",
-      "juni",
-      "juli",
+      "jun",
+      "jul",
       "avgust",
       "septembar",
       "oktobar",
@@ -52,7 +52,7 @@ $provide.value("$locale", {
       "ned",
       "pon",
       "uto",
-      "sri",
+      "sre",
       "\u010det",
       "pet",
       "sub"
@@ -73,12 +73,12 @@ $provide.value("$locale", {
     ],
     "fullDate": "EEEE, dd. MMMM y.",
     "longDate": "dd. MMMM y.",
-    "medium": "y-MM-dd HH:mm:ss",
-    "mediumDate": "y-MM-dd",
-    "mediumTime": "HH:mm:ss",
-    "short": "yy-MM-dd HH:mm",
-    "shortDate": "yy-MM-dd",
-    "shortTime": "HH:mm"
+    "medium": "dd.MM.y. HH.mm.ss",
+    "mediumDate": "dd.MM.y.",
+    "mediumTime": "HH.mm.ss",
+    "short": "d.M.yy. HH.mm",
+    "shortDate": "d.M.yy.",
+    "shortTime": "HH.mm"
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "KM",

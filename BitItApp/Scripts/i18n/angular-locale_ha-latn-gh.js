@@ -31,7 +31,7 @@ $provide.value("$locale", {
       "Talata",
       "Laraba",
       "Alhamis",
-      "Jumma\u02bca",
+      "Jumma'a",
       "Asabar"
     ],
     "MONTH": [

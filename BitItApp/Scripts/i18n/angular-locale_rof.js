@@ -22,7 +22,7 @@ function getVF(n, opt_precision) {
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
-      "kang\u2019ama",
+      "kang'ama",
       "kingoto"
     ],
     "DAY": [

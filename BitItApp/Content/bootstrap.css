@@ -7116,3 +7116,39 @@ td.visible-print {
     display: none !important;
   }
 }
+
+.row {
+    height: 24px;
+    overflow: hidden;
+    transition: height 1s ease;          
+}
+
+.row > div {
+    display: inline-block;
+    margin-left: -4px;
+    border-bottom: 1px solid #bbb;
+}
+
+.row > div:nth-child(1) {
+    width: 20%;    
+}
+.row > div:nth-child(2) {
+    width: 20%;
+}
+.row > div:nth-child(3) {
+    width: 20%;
+}
+.row > div:nth-child(4) {
+    width: 20%;
+}
+.row > div:nth-child(5) {
+    width: 20%;
+}
+
+.row > .row-data {
+    display: block;    
+}
+
+.row.zoom {
+    height: 215px;
+} 

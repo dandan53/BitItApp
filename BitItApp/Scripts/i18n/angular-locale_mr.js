@@ -4,8 +4,8 @@ var PLURAL_CATEGORY = {ZERO: "zero", ONE: "one", TWO: "two", FEW: "few", MANY: "
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
-      "\u092e.\u092a\u0942.",
-      "\u092e.\u0909."
+      "[AM]",
+      "[PM]"
     ],
     "DAY": [
       "\u0930\u0935\u093f\u0935\u093e\u0930",
@@ -68,7 +68,7 @@ $provide.value("$locale", {
     "GROUP_SEP": ",",
     "PATTERNS": [
       {
-        "gSize": 2,
+        "gSize": 3,
         "lgSize": 3,
         "maxFrac": 3,
         "minFrac": 0,

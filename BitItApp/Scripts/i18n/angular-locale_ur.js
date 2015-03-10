@@ -97,15 +97,15 @@ $provide.value("$locale", {
         "posSuf": ""
       },
       {
-        "gSize": 2,
+        "gSize": 3,
         "lgSize": 3,
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-        "negPre": "\u00a4\u00a0-",
-        "negSuf": "",
-        "posPre": "\u00a4\u00a0",
-        "posSuf": ""
+        "negPre": "\u00a4-",
+        "negSuf": "\u200e",
+        "posPre": "\u00a4",
+        "posSuf": "\u200e"
       }
     ]
   },

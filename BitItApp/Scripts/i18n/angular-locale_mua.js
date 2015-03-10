@@ -26,7 +26,7 @@ $provide.value("$locale", {
       "lilli"
     ],
     "DAY": [
-      "Com\u2019yakke",
+      "Com'yakke",
       "Comlaa\u0257ii",
       "Comzyii\u0257ii",
       "Comkolle",

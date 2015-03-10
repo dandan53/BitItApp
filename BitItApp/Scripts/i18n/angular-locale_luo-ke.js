@@ -30,7 +30,7 @@ $provide.value("$locale", {
       "Wuok Tich",
       "Tich Ariyo",
       "Tich Adek",
-      "Tich Ang\u2019wen",
+      "Tich Ang'wen",
       "Tich Abich",
       "Ngeso"
     ],
@@ -38,7 +38,7 @@ $provide.value("$locale", {
       "Dwe mar Achiel",
       "Dwe mar Ariyo",
       "Dwe mar Adek",
-      "Dwe mar Ang\u2019wen",
+      "Dwe mar Ang'wen",
       "Dwe mar Abich",
       "Dwe mar Auchiel",
       "Dwe mar Abiriyo",

@@ -40,9 +40,9 @@ $provide.value("$locale", {
       "Sa"
     ],
     "SHORTMONTH": [
-      "Jan.",
-      "Feb.",
-      "Mrt.",
+      "Jan",
+      "Feb",
+      "Mar",
       "Apr",
       "Mei",
       "Jun",
