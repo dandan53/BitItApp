@@ -50,21 +50,24 @@ namespace BitItApp.Controllers
         // GET api/Todo/5
         public Item Get(int id)
         {
-            Item item1 = new Item()
-            {
-                Amount = 10,
-                Category = "מוצרי חשמל",
-                CategoryId = 1,
-                DueDate = DateTime.Now.AddDays(1),
-                FirstPrice = 100,
-                Id = 1,
-                Product = "טלויזיה",
-                ProductId = 1,
-                SubCategory = "טלויזיות",
-                SubCategoryId = 1
-            };
+            Item item = DAL.Instance.GetItem(id);
+            return item;
+            
+            //Item item1 = new Item()
+            //{
+            //    Amount = 10,
+            //    Category = "מוצרי חשמל",
+            //    CategoryId = 1,
+            //    DueDate = DateTime.Now.AddDays(1),
+            //    FirstPrice = 100,
+            //    Id = 1,
+            //    Product = "טלויזיה",
+            //    ProductId = 1,
+            //    SubCategory = "טלויזיות",
+            //    SubCategoryId = 1
+            //};
 
-            return item1;
+            //return item1;
         }
 
         // DELETE api/Item/5

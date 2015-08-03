@@ -40,6 +40,13 @@ namespace BitItApp.Controllers
             Items.Add(item);
         }
 
+        public Item GetItem(int id)
+        {
+            //IEnumerable<Item> results = Items.Where(i => i.Id.Equals(id));
+            Item result = Items.First(item => item.Id == id);
+            return result;
+        }
+
         private static void Init()
         {
             Items = new List<Item>();

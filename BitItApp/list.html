@@ -84,7 +84,9 @@
                             <br/>
                             <label> Text: </label> <label> {{item.Text}} </label>
                             <br/>
-                            <button class="btn btn-success" ng-disabled="error || incomplete" ng-click="bid(item)">
+                            <label> Bid Id: </label> <label> {{item.Id}} </label>
+                            <br/>
+                            <button class="btn btn-success" ng-disabled="error || incomplete" ng-click="price_bid(item)">
                             <span class="glyphicon glyphicon-save"></span> Bid
                             </button>
                         </div>

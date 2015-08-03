@@ -5,6 +5,7 @@ app.config(function ($routeProvider) {
          when('/', { controller: 'MainCtrl', templateUrl: 'main.html' }).
          when('/login', { controller: 'LoginCtrl', templateUrl: 'login.html' }).
          when('/newbid', { controller: 'NewbidCtrl', templateUrl: 'newbid.html' }).
+         when('/pricebid/:id', { controller: 'PricebidCtrl', templateUrl: 'pricebid.html' }).
          when('/signup', { controller: 'SignupCtrl', templateUrl: 'signup.html' }).
          otherwise({ redirectTo: '/' });
 });
@@ -81,13 +82,13 @@ app.service("bidService", function ($http, $q) {
                 }
 
                 // I get all of the friends in the remote collection.
-                function getBid() {
+                function getBid(id) {
 
                     var request = $http({
                         method: "get",
                         url: "/api/item/",
                         params: {
-                            id: 10
+                            id: id
                         }
                     });
 
@@ -166,7 +167,7 @@ app.service("bidService", function ($http, $q) {
                 // from the API response payload.
                 function handleSuccess(response) {
 
-                    alert("handleSuccess");
+                   // alert("handleSuccess");
 
                     return (response.data);
 
@@ -291,8 +292,8 @@ app.controller('ListCtrl', function ($scope, $location, Item) {
 
     $scope.reset();
     
-    $scope.bid = function (item) {
-        alert(item.Category);
+    $scope.price_bid = function (item) {
+        $location.path('/pricebid/' + item.Id);
     };
 
 
@@ -402,6 +403,47 @@ app.controller('NewbidCtrl', function ($scope, $location, $routeParams, Login, b
 
 
 });
+
+
+//******************** Price Bid **************************//
+
+app.controller('PricebidCtrl', function ($scope, $location, $routeParams, Login, bidService) {
+
+
+    $scope.bid_id = $routeParams.id;
+   
+    $scope.get_bid = function () {
+
+        bidService.getBid($scope.bid_id)
+                        .then(
+                            loadData,
+                            function (errorMessage) {
+
+                                console.warn(errorMessage);
+
+                            }
+                        )
+        ;
+    };
+
+    function loadData(data) {
+        $scope.item = data;
+    };
+
+
+    $scope.get_bid();
+
+
+
+    // I load the remote data from the server.
+
+    function loadRemoteData() {
+        $location.url('http://www.google.com')
+    };
+
+
+});
+
 
 
 

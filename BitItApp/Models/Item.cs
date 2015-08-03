@@ -20,6 +20,9 @@ namespace BitItApp.Models
         public decimal FirstPrice { get; set; }
         public decimal SecondPrice { get; set; }
         public decimal ThirdPrice { get; set; }
-        public int AskCID { get; set; }
+        public int AskId { get; set; }
+        public int FirstBidId { get; set; }
+        public int SecondBidId { get; set; }
+        public int ThirdBidId { get; set; }
     }
 }

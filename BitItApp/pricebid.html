@@ -1,0 +1,32 @@
+﻿<div ng-controller="PricebidCtrl">
+
+    <h2>Price Bid</h2>
+    <br/>
+    
+    <h4> Bid Details </h4>
+
+    <form>
+        <div>
+            <label>Due Date: {{item.DueDate | date:largeDate}}</label>
+        </div>
+        <div>
+            <label>Amount: {{item.Amount}}</label>
+        </div>
+        <div>
+            <label>Bid Id: {{item.Id}}</label>
+        </div>
+    </form>
+    
+    <h4> Your Bid </h4>
+
+    <div>
+        <label>Price:</label>
+        <input type="number" ng-model="price" />
+    </div>
+
+    <hr>
+    <button class="btn btn-success" ng-disabled="error || incomplete" ng-click="addBid()">
+        <span class="glyphicon glyphicon-save"></span>  Price Bid
+    </button>
+
+</div>
