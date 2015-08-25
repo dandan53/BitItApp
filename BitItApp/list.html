@@ -7,21 +7,21 @@
             <tr>
                 <td>
                     <div>
-                        Category:
+                        קטגוריה:
                         <br/>
                         <select ng-model="selectedOption" ng-options="option.name for option in options" ng-change="update_selected_option()"></select>
                     </div>
                 </td>
                 <td>
                     <div>
-                        SubCategory:
+                        תת קטגוריה:
                         <br/>
                         <select ng-model="selectedSubOption" ng-options="option.name for option in subOptions" ng-change="update_selected_subOption()"></select>
                     </div>
                 </td>
                 <td>
                     <div>
-                        Product:
+                        מוצר:
                         <br/>
                         <select ng-model="selectedProduct" ng-options="option.name for option in products"></select>
                     </div>
@@ -32,7 +32,7 @@
         <br/>
 
         <button ng-click="search()" class="btn btn-primary">
-            Search
+            חפש
         </button>
     </span>
     
@@ -72,19 +72,19 @@
                     <div><a ng-click="setCl(this)">{{he.det}}</a><i class="icon-edit"></i></div>
                     <div class="row-data">
                         <div>
-                            <label> category: </label> <label> {{item.Category}} </label>
+                            <label> קטגוריה: </label> <label> {{item.Category}} </label>
                             <br/>
-                            <label> Product: </label> <label> {{item.Product}} </label>
+                            <label> מוצר: </label> <label> {{item.Product}} </label>
                             <br/>
-                            <label> Product Id: </label> <label> {{item.ProductId}} </label>
+                            <label> מספר מוצר: </label> <label> {{item.ProductId}} </label>
                             <br/>
-                            <label> DueDate: </label> <label> {{item.DueDate | date:'yyyy-MM-dd HH:mm:ss'}} </label>
+                            <label> תאריך סיום המכרז: </label> <label> {{item.DueDate | date:'yyyy-MM-dd HH:mm:ss'}} </label>
                             <br/>
-                            <label> FirstPrice: </label> <label> {{item.FirstPrice}} </label>
+                            <label> המחיר הטוב ביותר: </label> <label> {{item.FirstPrice}} </label>
                             <br/>
-                            <label> Text: </label> <label> {{item.Text}} </label>
+                            <label> פרטים נוספים: </label> <label> {{item.Text}} </label>
                             <br/>
-                            <label> Bid Id: </label> <label> {{item.Id}} </label>
+                            <label> מכרז מספר: </label> <label> {{item.Id}} </label>
                             <br/>
                             <button class="btn btn-success" ng-disabled="error || incomplete" ng-click="price_bid(item)">
                             <span class="glyphicon glyphicon-save"></span> Bid
