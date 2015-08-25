@@ -1,8 +1,10 @@
-﻿
-<table class="table table-striped">
+﻿<div data-ng-include="'main_header.html'" style="width:100%; height:100%"></div>
+
+<div style="width:100%; height:100%">
+    <table class="table table-striped" style="width:100%; height:100%">
     <tbody>
         <tr>
-            <td ng-include="'list.html'" />
+            <td data-ng-include="'list.html'" />
             <td>
                 
                <a href="#/newbid" class="btn">הוסף מכרז חדש</a>
@@ -14,3 +16,5 @@
         </tr>
     </tbody>
 </table>
+
+</div>
