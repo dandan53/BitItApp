@@ -1,32 +1,32 @@
 ﻿<div ng-controller="PricebidCtrl">
 
-    <h2>Price Bid</h2>
+    <h2>הגש הצעת מחיר  </h2>
     <br/>
     
-    <h4> Bid Details </h4>
+    <h4> פרטי המכרז </h4>
 
     <form>
         <div>
-            <label>Due Date: {{item.DueDate | date:largeDate}}</label>
+            <label>זמן סיום המכרז: {{item.DueDate | date:largeDate}}</label>
         </div>
         <div>
-            <label>Amount: {{item.Amount}}</label>
+            <label>כמות: {{item.Amount}}</label>
         </div>
         <div>
-            <label>Bid Id: {{item.Id}}</label>
+            <label>מספר מכרז: {{item.Id}}</label>
         </div>
     </form>
     
-    <h4> Your Bid </h4>
+    <h4> ההצעה שלך </h4>
 
     <div>
-        <label>Price:</label>
+        <label>מחיר:</label>
         <input type="number" ng-model="price" />
     </div>
 
     <hr>
     <button class="btn btn-success" ng-disabled="error || incomplete" ng-click="addBid()">
-        <span class="glyphicon glyphicon-save"></span>  Price Bid
+        <span class="glyphicon glyphicon-save"></span>  הצע מחיר
     </button>
 
 </div>
