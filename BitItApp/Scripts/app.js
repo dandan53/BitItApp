@@ -215,10 +215,11 @@ app.controller('ListCtrl', function ($scope, $location, Item) {
     //        });
     //};
 
-    $scope.get_items = function (categoryId, subCategoryId) {
+    $scope.get_items = function (categoryId, subCategoryId, productId) {
         Item.query({
             categoryId: categoryId,
-            subCategoryId: subCategoryId
+            subCategoryId: subCategoryId,
+            productId: productId
         },
             function (data) {
                 $scope.items = data;
@@ -230,8 +231,9 @@ app.controller('ListCtrl', function ($scope, $location, Item) {
     $scope.search = function () {
         var categoryId = $scope.selectedOption.id;
         var subCategoryId = $scope.selectedSubOption.id;
+        var productId = $scope.selectedProduct.id;
 
-        $scope.get_items(categoryId, subCategoryId);
+        $scope.get_items(categoryId, subCategoryId, productId);
     };
 
     $scope.sort = function (col) {
@@ -513,25 +515,25 @@ var getSubCategories = function (parentId) {
 
 var products = {};
 products[1000] = [
-    { 'id': 100000, 'name': 'הכל' }
+    { 'id': 0, 'name': 'הכל' }
 ];
 
 products[100] = [
-    { 'id': 10000, 'name': 'הכל' },
+    { 'id': 0, 'name': 'הכל' },
     { 'id': 10001, 'name': 'קרמיקה' },
     { 'id': 10002, 'name': 'צבע' },
     { 'id': 10003, 'name': 'פלקט' }
 ];
 
 products[101] = [
-    { 'id': 10100, 'name': 'הכל' },
+    { 'id': 0, 'name': 'הכל' },
     { 'id': 10101, 'name': 'מגרפה' },
     { 'id': 10102, 'name': 'מעדר' },
     { 'id': 10103, 'name': 'מטאטא' }
 ];
 
 products[102] = [
-    { 'id': 10200, 'name': 'הכל' },
+    { 'id': 0, 'name': 'הכל' },
     { 'id': 10201, 'name': 'מסור' },
     { 'id': 10202, 'name': 'פטיש' },
     { 'id': 10203, 'name': 'מסמר' }
@@ -539,38 +541,42 @@ products[102] = [
 
 
 products[200] = [
-    { 'id': 20000, 'name': 'הכל' },
+    { 'id': 0, 'name': 'הכל' },
     { 'id': 20001, 'name': 'מאוורר תקרה' }
 ];
 
 products[201] = [
-    { 'id': 20100, 'name': 'הכל' },
+    { 'id': 0, 'name': 'הכל' },
     { 'id': 20101, 'name': 'מזגן עילי' }
 ];
 
 products[202] = [
-    { 'id': 20200, 'name': 'הכל' },
+    { 'id': 0, 'name': 'הכל' },
+//    { 'id': 20200, 'name': 'הכל' },
     { 'id': 20201, 'name': 'LCD' },
     { 'id': 20202, 'name': 'LED' },
 ];
 
 
 products[300] = [
-    { 'id': 30000, 'name': 'הכל' },
+//    { 'id': 30000, 'name': 'הכל' },
+    { 'id': 0, 'name': 'הכל' },
     { 'id': 30001, 'name': 'ארון קיר' },
     { 'id': 30002, 'name': 'ארונית' },
     { 'id': 30003, 'name': 'ארון מטבח' }
 ];
 
 products[301] = [
-    { 'id': 30100, 'name': 'הכל' },
+    { 'id': 0, 'name': 'הכל' },
+//    { 'id': 30100, 'name': 'הכל' },
     { 'id': 30101, 'name': 'כסא פלסטיק' },
     { 'id': 30102, 'name': 'כסא בר' },
     { 'id': 30103, 'name': 'שרשפרף' }
 ];
 
 products[302] = [
-    { 'id': 30200, 'name': 'הכל' },
+    { 'id': 0, 'name': 'הכל' },
+//    { 'id': 30200, 'name': 'הכל' },
     { 'id': 30201, 'name': 'שולחן מטבח' },
     { 'id': 30202, 'name': 'שולחן מחשב' },
     { 'id': 30203, 'name': 'שולחן ישיבות' }

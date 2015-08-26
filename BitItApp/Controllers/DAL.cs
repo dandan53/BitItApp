@@ -59,8 +59,8 @@ namespace BitItApp.Controllers
                 DueDate = DateTime.Now.AddDays(1),
                 FirstPrice = 100,
                 Id = 1,
-                Product = "l.s.d",
-                ProductId = 1,
+                Product = "LCD",
+                ProductId = 20201,
                 SubCategory = "טלויזיה",
                 SubCategoryId = 202
             };
@@ -76,7 +76,7 @@ namespace BitItApp.Controllers
                 FirstPrice = 10,
                 Id = 2,
                 Product = "מטאטא",
-                ProductId = 2,
+                ProductId = 10103,
                 SubCategory = "חומרי עבודה",
                 SubCategoryId = 101
             };
@@ -91,77 +91,77 @@ namespace BitItApp.Controllers
                 DueDate = DateTime.Now.AddDays(1),
                 FirstPrice = 100,
                 Id = 3,
-                Product = "מאוורר קיר",
-                ProductId = 1,
+                Product = "מאוורר תקרה",
+                ProductId = 20001,
                 SubCategory = "מאוורר",
                 SubCategoryId = 200
             };
 
             Items.Add(item3);
 
-            //Item item4 = new Item()
-            //{
-            //    Amount = 10,
-            //    Category = "ריהוט",
-            //    CategoryId = 3,
-            //    DueDate = DateTime.Now.AddDays(1),
-            //    FirstPrice = 100,
-            //    Id = 1,
-            //    Product = "ארון מחשב",
-            //    ProductId = 1,
-            //    SubCategory = "ארונות",
-            //    SubCategoryId = 300
-            //};
+            Item item4 = new Item()
+            {
+                Amount = 10,
+                Category = "ריהוט",
+                CategoryId = 3,
+                DueDate = DateTime.Now.AddDays(1),
+                FirstPrice = 100,
+                Id = 4,
+                Product = "ארון קיר",
+                ProductId = 30001,
+                SubCategory = "ארונות",
+                SubCategoryId = 300
+            };
 
-            //Items.Add(item4);
+            Items.Add(item4);
 
-            //Item item5 = new Item()
-            //{
-            //    Amount = 10,
-            //    Category = "מוצרי חשמל",
-            //    CategoryId = 2,
-            //    DueDate = DateTime.Now.AddDays(1),
-            //    FirstPrice = 100,
-            //    Id = 1,
-            //    Product = "טלויזיה",
-            //    ProductId = 1,
-            //    SubCategory = "טלויזיות",
-            //    SubCategoryId = 202
-            //};
+            Item item5 = new Item()
+            {
+                Amount = 10,
+                Category = "מוצרי חשמל",
+                CategoryId = 2,
+                DueDate = DateTime.Now.AddDays(1),
+                FirstPrice = 100,
+                Id = 5,
+                Product = "LED",
+                ProductId = 20202,
+                SubCategory = "טלויזיות",
+                SubCategoryId = 202
+            };
 
-            //Items.Add(item5);
+            Items.Add(item5);
 
-            //Item item6 = new Item()
-            //{
-            //    Amount = 12,
-            //    Category = "ריהוט",
-            //    CategoryId = 3,
-            //    DueDate = DateTime.Now.AddDays(2),
-            //    FirstPrice = 10,
-            //    Id = 2,
-            //    Product = "כסאות",
-            //    ProductId = 2,
-            //    SubCategory = "כסאות",
-            //    SubCategoryId = 301
-            //};
+            Item item6 = new Item()
+            {
+                Amount = 12,
+                Category = "ריהוט",
+                CategoryId = 3,
+                DueDate = DateTime.Now.AddDays(2),
+                FirstPrice = 10,
+                Id = 2,
+                Product = "כסא בר",
+                ProductId = 30102,
+                SubCategory = "כסאות",
+                SubCategoryId = 301
+            };
 
-            //Items.Add(item6);
+            Items.Add(item6);
 
-            //Item item7 = new Item()
-            //{
-            //    Amount = 10,
-            //    Category = "מוצרי חשמל",
-            //    CategoryId = 2,
-            //    DueDate = DateTime.Now.AddDays(1),
-            //    FirstPrice = 100,
-            //    Id = 1,
-            //    Product = "מזגן קטן",
-            //    ProductId = 1,
-            //    SubCategory = "מזגן",
-            //    SubCategoryId = 201
-            //};
+            Item item7 = new Item()
+            {
+                Amount = 10,
+                Category = "מוצרי חשמל",
+                CategoryId = 2,
+                DueDate = DateTime.Now.AddDays(1),
+                FirstPrice = 100,
+                Id = 1,
+                Product = "מזגן עילי",
+                ProductId = 20101,
+                SubCategory = "מזגן",
+                SubCategoryId = 201
+            };
 
-            //Items.Add(item7);
+            Items.Add(item7);
 
             //Item item8 = new Item()
             //{
