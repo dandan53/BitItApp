@@ -90,7 +90,7 @@ namespace BitItApp.Controllers
                 CategoryId = 2,
                 DueDate = DateTime.Now.AddDays(1),
                 FirstPrice = 100,
-                Id = 1,
+                Id = 3,
                 Product = "מאוורר קיר",
                 ProductId = 1,
                 SubCategory = "מאוורר",

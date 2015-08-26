@@ -371,34 +371,40 @@ app.controller('NewbidCtrl', function ($scope, $location, $routeParams, Login, b
     $scope.amount = 1;
     
     $scope.addBid = function () {
-        
-        var newBid = {
-            CategoryId: $scope.selectedOption.id,
-            Category: $scope.selectedOption.name,
-            SubCategoryId: $scope.selectedSubOption.id,
-            SubCategory: $scope.selectedSubOption.name,
-            Product: $scope.selectedProduct.name,
-            ProductId: $scope.selectedProduct.id,
-            DueDate: $scope.dueDate,
-            Amount: $scope.amount
-        };
 
-        bidService.addBid(newBid)
-                        .then(
-                            loadRemoteData,
-                            function (errorMessage) {
+        var product_name = $scope.selectedProduct.name;
+        if (product_name === 'הכל') {
+            alert('נא בחר מוצר');
+        }
+        else{
+            var newBid = {
+                CategoryId: $scope.selectedOption.id,
+                Category: $scope.selectedOption.name,
+                SubCategoryId: $scope.selectedSubOption.id,
+                SubCategory: $scope.selectedSubOption.name,
+                Product: $scope.selectedProduct.name,
+                ProductId: $scope.selectedProduct.id,
+                DueDate: $scope.dueDate,
+                Amount: $scope.amount
+            };
 
-                                console.warn(errorMessage);
+            bidService.addBid(newBid)
+                            .then(
+                                loadRemoteData,
+                                function (errorMessage) {
 
-                            }
-                        )
-        ;
+                                    console.warn(errorMessage);
+
+                                }
+                            );
+
+        }
     };
     
     // I load the remote data from the server.
 
     function loadRemoteData() {
-        $location.url('http://www.google.com')
+        $location.url('http://www.google.com');
     };
 
 
