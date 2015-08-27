@@ -84,9 +84,16 @@ namespace BitItApp.Controllers
         public HttpResponseMessage PostTodo(Item item)
         {
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, item);
-            response.Headers.Location = new Uri(uriString: Url.Link("DefaultApi", new {id = item.Id}));
+            response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = item.Id }));
 
-            DAL.Instance.AddItem(item);
+            if (item.Id == 0)
+            {
+                DAL.Instance.AddItem(item);                
+            }
+            else
+            {
+                DAL.Instance.UpdateItem(item);
+            }
 
             return response;
         }

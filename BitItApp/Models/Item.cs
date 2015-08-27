@@ -24,5 +24,8 @@ namespace BitItApp.Models
         public int FirstBidId { get; set; }
         public int SecondBidId { get; set; }
         public int ThirdBidId { get; set; }
+
+        public decimal NewPrice { get; set; }
+        public string FirstPriceDisplay { get; set; }
     }
 }

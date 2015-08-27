@@ -29,6 +29,8 @@ app.service("bidService", function ($http, $q) {
                 return ({
                     addBid: addBid,
                     getBid: getBid,
+                    updateBid: updateBid
+
                     //removeFriend: removeFriend
                 });
 
@@ -64,24 +66,24 @@ app.service("bidService", function ($http, $q) {
 
                 }
 
-                function addFriend(name) {
+                function updateBid(item) {
 
                     var request = $http({
                         method: "post",
-                        url: "api/index.cfm",
-                        params: {
-                            action: "add"
-                        },
-                        data: {
-                            name: name
+                        url: "/api/item/",
+                        //params: {
+                        //    action: "add"
+                        //},
+                        data:
+                        {
+                            Id: item.Id,
+                            NewPrice: item.NewPrice
                         }
                     });
 
                     return (request.then(handleSuccess, handleError));
 
-                }
-
-                // I get all of the friends in the remote collection.
+                }               // I get all of the friends in the remote collection.
                 function getBid(id) {
 
                     var request = $http({
@@ -372,7 +374,7 @@ app.controller('NewbidCtrl', function ($scope, $location, $routeParams, Login, b
 
     $scope.amount = 1;
     
-    $scope.addBid = function () {
+    $scope.add_bid = function () {
 
         var product_name = $scope.selectedProduct.name;
         if (product_name === 'הכל') {
@@ -442,11 +444,36 @@ app.controller('PricebidCtrl', function ($scope, $location, $routeParams, Login,
     $scope.get_bid();
 
 
+    $scope.update_bid = function () {
+
+        var price = $scope.price;
+        if (price > 0)
+        {
+            var updatedBid = {
+                Id: $scope.bid_id,
+                NewPrice: price
+            };
+
+            bidService.updateBid(updatedBid)
+                            .then(
+                                loadRemoteData,
+                                function (errorMessage) {
+
+                                    console.warn(errorMessage);
+
+                                }
+                            );
+
+        } else {
+            alert('נא הגש הצעה');
+        }
+    };
+
 
     // I load the remote data from the server.
 
     function loadRemoteData() {
-        $location.url('http://www.google.com')
+        $location.url('http://www.google.com');
     };
 
 

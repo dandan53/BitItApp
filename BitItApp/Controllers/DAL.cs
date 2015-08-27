@@ -37,7 +37,33 @@ namespace BitItApp.Controllers
 
         public void AddItem(Item item)
         {
+            item.Id = CreateItemId();
+            item.FirstPriceDisplay = "--";
             Items.Add(item);
+        }
+
+
+        public void UpdateItem(Item item)
+        {
+            Item updatedItem = GetItem(item.Id);
+            if (updatedItem != null)
+            {
+                if (updatedItem.FirstPrice == 0 || item.NewPrice < updatedItem.FirstPrice)
+                {
+                    updatedItem.FirstPrice = item.NewPrice;
+                    updatedItem.FirstPriceDisplay = item.NewPrice.ToString();
+                }
+                else if (updatedItem.SecondPrice == 0 || item.NewPrice < updatedItem.SecondPrice)
+                {
+                    updatedItem.SecondPrice = item.NewPrice;
+                    updatedItem.FirstPriceDisplay = item.NewPrice.ToString();
+                }
+                else if (updatedItem.ThirdPrice == 0 || item.NewPrice < updatedItem.ThirdPrice)
+                {
+                    updatedItem.ThirdPrice = item.NewPrice;
+                    updatedItem.FirstPriceDisplay = item.NewPrice.ToString();
+                }
+            }
         }
 
         public Item GetItem(int id)
@@ -45,6 +71,14 @@ namespace BitItApp.Controllers
             //IEnumerable<Item> results = Items.Where(i => i.Id.Equals(id));
             Item result = Items.First(item => item.Id == id);
             return result;
+        }
+
+        private static int CreateItemId()
+        {
+            int retVal = Items.Max(i => i.Id);
+            retVal++;
+            
+            return retVal;
         }
 
         private static void Init()
@@ -62,7 +96,8 @@ namespace BitItApp.Controllers
                 Product = "LCD",
                 ProductId = 20201,
                 SubCategory = "טלויזיה",
-                SubCategoryId = 202
+                SubCategoryId = 202,
+                FirstPriceDisplay = "100"
             };
 
             Items.Add(item1);
@@ -78,7 +113,8 @@ namespace BitItApp.Controllers
                 Product = "מטאטא",
                 ProductId = 10103,
                 SubCategory = "חומרי עבודה",
-                SubCategoryId = 101
+                SubCategoryId = 101,
+                FirstPriceDisplay = "10"
             };
 
             Items.Add(item2);
@@ -94,7 +130,8 @@ namespace BitItApp.Controllers
                 Product = "מאוורר תקרה",
                 ProductId = 20001,
                 SubCategory = "מאוורר",
-                SubCategoryId = 200
+                SubCategoryId = 200,
+                FirstPriceDisplay = "100"
             };
 
             Items.Add(item3);
@@ -110,7 +147,8 @@ namespace BitItApp.Controllers
                 Product = "ארון קיר",
                 ProductId = 30001,
                 SubCategory = "ארונות",
-                SubCategoryId = 300
+                SubCategoryId = 300,
+                FirstPriceDisplay = "100"
             };
 
             Items.Add(item4);
@@ -126,7 +164,8 @@ namespace BitItApp.Controllers
                 Product = "LED",
                 ProductId = 20202,
                 SubCategory = "טלויזיות",
-                SubCategoryId = 202
+                SubCategoryId = 202,
+                FirstPriceDisplay = "100"
             };
 
             Items.Add(item5);
@@ -138,11 +177,12 @@ namespace BitItApp.Controllers
                 CategoryId = 3,
                 DueDate = DateTime.Now.AddDays(2),
                 FirstPrice = 10,
-                Id = 2,
+                Id = 6,
                 Product = "כסא בר",
                 ProductId = 30102,
                 SubCategory = "כסאות",
-                SubCategoryId = 301
+                SubCategoryId = 301,
+                FirstPriceDisplay = "10"
             };
 
             Items.Add(item6);
@@ -153,12 +193,13 @@ namespace BitItApp.Controllers
                 Category = "מוצרי חשמל",
                 CategoryId = 2,
                 DueDate = DateTime.Now.AddDays(1),
-                FirstPrice = 100,
-                Id = 1,
+                FirstPrice = 1000,
+                Id = 7,
                 Product = "מזגן עילי",
                 ProductId = 20101,
                 SubCategory = "מזגן",
-                SubCategoryId = 201
+                SubCategoryId = 201,
+                FirstPriceDisplay = "1000"
             };
 
             Items.Add(item7);

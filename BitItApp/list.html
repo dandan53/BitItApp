@@ -67,7 +67,7 @@
                 <div class={{cl}}>
                     <div>{{item.Category}}</div>
                     <div>{{item.Product}}</div>
-                    <div>{{item.FirstPrice}}</div>
+                    <div>{{item.FirstPriceDisplay}}</div>
                     <div>{{item.DueDate | date:largeDate}}</div>
                     <div><a ng-click="setCl(this)">{{he.det}}</a><i class="icon-edit"></i></div>
                     <div class="row-data">
@@ -80,7 +80,7 @@
                             <br/>
                             <label> תאריך סיום המכרז: </label> <label> {{item.DueDate | date:'yyyy-MM-dd HH:mm:ss'}} </label>
                             <br/>
-                            <label> המחיר הטוב ביותר: </label> <label> {{item.FirstPrice}} </label>
+                            <label> המחיר הטוב ביותר: </label> <label> {{item.FirstPriceDisplay}} </label>
                             <br/>
                             <label> פרטים נוספים: </label> <label> {{item.Text}} </label>
                             <br/>
