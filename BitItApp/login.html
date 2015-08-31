@@ -6,10 +6,10 @@
 
         <form name="form" class="form-horizontal">
             <div class="control-group" ng-class="{error: form.Text.$invalid}">
-                <input type="text" ng-model="item.Mail" id="Mail" name="Mail" placeholder="כתובת מייל">
+                <input type="text" ng-model="cred.username" id="Mail" name="Mail" placeholder="שם משתמש">
             </div>
             <div class="control-group" ng-class="{error: form.Priority.$invalid}">
-                <input type="password" ng-model="item.Password" id="Password" name="Password" placeholder="סיסמה">
+                <input type="password" ng-model="cred.password" id="Password" name="Password" placeholder="סיסמה">
             </div>
         
             <br/>

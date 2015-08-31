@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using System.Web.Mvc;
 using BitItApp.Models;
 
 namespace BitItApp.Controllers
 {
-    public class LoginController : ApiController
+    public class RegisterController : ApiController
     {
         [System.Web.Mvc.HttpPost]
-        public LoginResult Post(LoginRequest request)
+        public RegisterResult Post(RegisterRequest request)
         {
-            var retVal = new LoginResult();
+            var retVal = new RegisterResult();
 
             if (request != null)
             {
-                var user = DAL.Instance.GetUserByUsernameAndPassword(request.Username, request.Password);
+                var user = DAL.Instance.AddUser(request);
                 if (user != null && user.CID > 0)
                 {
                     retVal.User = user;
@@ -27,14 +28,14 @@ namespace BitItApp.Controllers
         }
     }
 
-    public class LoginRequest
+    public class RegisterRequest
     {
         public string Username { get; set; }
         public string Password { get; set; }
-        public bool IsLogout { get; set; }
+        public string Email { get; set; }
     }
 
-    public class LoginResult
+    public class RegisterResult
     {
         public User User { get; set; }
     }

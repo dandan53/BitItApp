@@ -179,6 +179,94 @@ app.service("bidService", function ($http, $q) {
         );
 
 
+app.service("LoginService", function ($http, $q) {
+
+    // Return public API.
+    return ({
+        login: login,
+        logout: logout
+    });
+
+
+    // ---
+    // PUBLIC METHODS.
+    // ---
+
+    function login(cred) {
+
+        var request = $http({
+            method: "post",
+            url: "/api/login/",
+            data:
+            {
+                Username: cred.username,
+                Password: cred.password
+            }
+        });
+
+        return (request.then(handleSuccess, handleError));
+    }
+
+    function logout(cred) {
+
+        var request = $http({
+            method: "post",
+            url: "/api/login/",
+            data:
+            {
+                Username: cred.username,
+                IsLogout: true
+            }
+        });
+
+        return (request.then(handleSuccess, handleError));
+    }
+
+    // ---
+    // PRIVATE METHODS.
+    // ---
+
+
+    // I transform the error response, unwrapping the application dta from
+    // the API response payload.
+    function handleError(response) {
+
+        // The API response from the server should be returned in a
+        // nomralized format. However, if the request was not handled by the
+        // server (or what not handles properly - ex. server error), then we
+        // may have to normalize it on our end, as best we can.
+        if (
+            !angular.isObject(response.data) ||
+            !response.data.message
+            ) {
+
+            return ($q.reject("An unknown error occurred."));
+
+        }
+
+        alert("handleError");
+
+        // Otherwise, use expected error message.
+        return ($q.reject(response.data.message));
+
+
+    }
+
+
+    // I transform the successful response, unwrapping the application data
+    // from the API response payload.
+    function handleSuccess(response) {
+
+        // alert("handleSuccess");
+
+        return (response.data);
+
+    }
+
+}
+);
+
+
 
 //***************** main ************************//
 
@@ -321,7 +409,7 @@ app.controller('ListCtrl', function ($scope, $location, Item) {
 
 //******************** Login **************************//
 
-app.controller('LoginCtrl', function ($scope, $location, $routeParams, Login) {
+app.controller('LoginCtrl', function ($scope, $location, $routeParams, LoginService) {
     $scope.forgetPassword = false;
 
     $scope.toggle_forget_password = function () {
@@ -332,20 +420,51 @@ app.controller('LoginCtrl', function ($scope, $location, $routeParams, Login) {
         return $scope.forgetPassword;
     };
 
-    $scope.login = function () {      
-        Login.save({
-            Username: $scope.item.Mail,
-            Password: $scope.item.Password
-        }, function (data) {
-            if (data != null && data.User != null) {
-                $scope.username = data.User.Username;
-                $scope.cid = data.User.CID;
-                $scope.is_logged_in(true);
-            } else {
-                alert("שם המשתמש או הסיסמא שהזנת אינם נכונים");
-            }
-        });
+    $scope.login = function () {
+
+        if ($scope.cred.username != "" && $scope.cred.password != "") {
+            var cred = {
+                username: $scope.cred.username,
+                password: $scope.cred.password
+            };
+
+            LoginService.login(cred)
+                .then(
+                    loadRemoteData,
+                    function (errorMessage) {
+                        console.warn(errorMessage);
+                    }
+                );
+        }
+        else {
+            alert('נא הכנס משתמש וסיסמא');
+        }
     };
+
+    // I load the remote data from the server.
+
+    function loadRemoteData(data) {
+        if (data != null && data.User != null) {
+            $scope.username = data.User.Username;
+            $scope.is_logged_in(true);
+        } else {
+            alert('שם משתמש או סיסמא אינם נכונים');
+        }
+    };
+
+    //$scope.login = function () {      
+    //    Login.save({
+    //        Username: $scope.cred.Mail,
+    //        Password: $scope.cred.Password
+    //    }, function (data) {
+    //        if (data != null && data.User != null) {
+    //            $scope.username = data.Username;
+    //            $scope.is_logged_in(true);
+    //        } else {
+    //            alert(data.CID);
+    //        }
+    //    });
+    //};
 
     $scope.logout = function () {
         $scope.username = "";
@@ -360,9 +479,9 @@ app.controller('LoginCtrl', function ($scope, $location, $routeParams, Login) {
         //});
     };
 
-    $scope.item = {};
-    $scope.item.Mail = "";
-    $scope.item.Password = "";
+    $scope.cred = {};
+    $scope.cred.username = "";
+    $scope.cred.password = "";
 
     $scope.is_logged = false;
 
@@ -371,7 +490,6 @@ app.controller('LoginCtrl', function ($scope, $location, $routeParams, Login) {
     };
 
     $scope.username = "";
-    $scope.cid = 0;
 });
 
 

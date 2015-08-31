@@ -697,6 +697,12 @@ namespace BitItApp.Controllers
             return result;
         }
 
+        public User GetUserByUsername(string username)
+        {
+            User result = Users.Find(user => user.Username.Equals(username));
+            return result;
+        }
+
         private static void InitUsers()
         {
             Users = new List<User>();
@@ -722,6 +728,37 @@ namespace BitItApp.Controllers
             Users.Add(user2);
         }
 
+
+        // Register //
+
+        public User AddUser(RegisterRequest registerRequest)
+        {
+            User existedUser = GetUserByUsername(registerRequest.Username);
+            if (existedUser == null)
+            {
+                var user = new User()
+                {
+                    CID = CreateUserCId(),
+                    Username = registerRequest.Username,
+                    Password = registerRequest.Password,
+                    Email = registerRequest.Email
+                };
+
+                Users.Add(user);
+
+                return user;
+            }
+            
+            return null;
+        }
+
+        private static int CreateUserCId()
+        {
+            int retVal = Users.Max(i => i.CID);
+            retVal++;
+
+            return retVal;
+        }
         
     }
 }

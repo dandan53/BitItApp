@@ -65,8 +65,8 @@ C:\Users\danda\documents\visual studio 2012\Projects\BititApp\BitItApp\bin\ko\Sy
 C:\Users\danda\documents\visual studio 2012\Projects\BititApp\BitItApp\bin\ru\System.Spatial.resources.dll
 C:\Users\danda\documents\visual studio 2012\Projects\BititApp\BitItApp\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\danda\documents\visual studio 2012\Projects\BititApp\BitItApp\bin\zh-Hant\System.Spatial.resources.dll
-C:\Users\danda\documents\visual studio 2012\Projects\BititApp\BitItApp\obj\Debug\BitItApp.csprojResolveAssemblyReference.cache
 C:\Users\danda\documents\visual studio 2012\Projects\BititApp\BitItApp\obj\Debug\BitItApp.Migrations.InitialCreate.resources
 C:\Users\danda\documents\visual studio 2012\Projects\BititApp\BitItApp\obj\Debug\BitItApp.csproj.GenerateResource.Cache
 C:\Users\danda\documents\visual studio 2012\Projects\BititApp\BitItApp\obj\Debug\BitItApp.dll
 C:\Users\danda\documents\visual studio 2012\Projects\BititApp\BitItApp\obj\Debug\BitItApp.pdb
+C:\Users\danda\documents\visual studio 2012\Projects\BititApp\BitItApp\obj\Debug\BitItApp.csprojResolveAssemblyReference.cache
