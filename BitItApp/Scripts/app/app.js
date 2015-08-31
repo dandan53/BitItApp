@@ -26,14 +26,6 @@ app.controller('MainCtrl', function ($scope) {
 
 });
 
-
-//********************* SignUp *********************************//
-
-app.controller('SignupCtrl', function ($scope, $location, $routeParams, Item) {
-
-});
-
-
 ///////// Resources /////////
 
 var categories = [

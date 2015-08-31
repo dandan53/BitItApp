@@ -56,7 +56,7 @@
     // I load the remote data from the server.
 
     function loadRemoteData() {
-        $location.url('http://www.google.com');
+        $location.url('/');
     };
 
 

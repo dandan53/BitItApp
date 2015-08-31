@@ -264,7 +264,14 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app\app.js" />
-    <Content Include="Scripts\app\list.js" />
+    <Content Include="Scripts\app\controllers\listCtrl.js" />
+    <Content Include="Scripts\app\controllers\loginCtrl.js" />
+    <Content Include="Scripts\app\controllers\newBidCtrl.js" />
+    <Content Include="Scripts\app\controllers\priceBidCtrl.js" />
+    <Content Include="Scripts\app\controllers\signupCtrl.js" />
+    <Content Include="Scripts\app\services\bidService.js" />
+    <Content Include="Scripts\app\services\loginService.js" />
+    <Content Include="Scripts\app\services\signupService.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\errors.json" />
