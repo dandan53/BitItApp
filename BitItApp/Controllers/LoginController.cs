@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using BitItApp.Models;
 
 namespace BitItApp.Controllers
 {
@@ -15,9 +16,10 @@ namespace BitItApp.Controllers
 
             if (request != null)
             {
-                if (request.Username.Equals("d") && request.Password.Equals("d"))
+                var user = DAL.Instance.GetUserByUsernameAndPassword(request.Username, request.Password);
+                if (user != null && user.CID > 0)
                 {
-                    retVal.CID = 1;
+                    retVal.User = user;
                 }
             }
 
@@ -33,6 +35,6 @@ namespace BitItApp.Controllers
 
     public class LoginResult
     {
-        public int CID { get; set; }
+        public User User { get; set; }
     }
 }

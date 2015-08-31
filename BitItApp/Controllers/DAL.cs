@@ -28,6 +28,10 @@ namespace BitItApp.Controllers
             }
         }
 
+        /// <summary>
+        /// Items
+        /// </summary>
+        
         private static List<Item> Items;
 
         public List<Item> GetItems()
@@ -82,6 +86,13 @@ namespace BitItApp.Controllers
         }
 
         private static void Init()
+        {
+            InitItems();
+
+            InitUsers();
+        }
+        
+        private static void InitItems()
         {
             Items = new List<Item>();
 
@@ -673,5 +684,44 @@ namespace BitItApp.Controllers
             //Items.Add(item72);
 
         }
+
+        /// <summary>
+        /// Users
+        /// </summary>
+
+        private static List<User> Users;
+
+        public User GetUserByUsernameAndPassword(string username, string password)
+        {
+            User result = Users.Find(user => user.Username.Equals(username) && user.Password.Equals(password));
+            return result;
+        }
+
+        private static void InitUsers()
+        {
+            Users = new List<User>();
+
+            User user1 = new User()
+            {
+                Username = "dan",
+                Password = "1",
+                Email = "dandan53@gmail.com",
+                CID = 1
+            };
+
+            Users.Add(user1);
+            
+            User user2 = new User()
+            {
+                Username = "carmi",
+                Password = "2",
+                Email = "carmilaks@gmail.com",
+                CID = 2
+            };
+
+            Users.Add(user2);
+        }
+
+        
     }
 }

@@ -332,18 +332,46 @@ app.controller('LoginCtrl', function ($scope, $location, $routeParams, Login) {
         return $scope.forgetPassword;
     };
 
-    $scope.login = function () {
+    $scope.login = function () {      
         Login.save({
             Username: $scope.item.Mail,
             Password: $scope.item.Password
         }, function (data) {
-            alert(data.CID);
+            if (data != null && data.User != null) {
+                $scope.username = data.User.Username;
+                $scope.cid = data.User.CID;
+                $scope.is_logged_in(true);
+            } else {
+                alert("שם המשתמש או הסיסמא שהזנת אינם נכונים");
+            }
         });
+    };
+
+    $scope.logout = function () {
+        $scope.username = "";
+        $scope.is_logged_in(false);
+
+        //Login.save({
+        //    Username: $scope.item.Mail,
+        //    Password: $scope.item.Password
+        //}, function (data) {
+        //    $scope.is_logged_in(false);
+        //    alert(data.CID);
+        //});
     };
 
     $scope.item = {};
     $scope.item.Mail = "";
     $scope.item.Password = "";
+
+    $scope.is_logged = false;
+
+    $scope.is_logged_in = function (is_login) {
+        $scope.is_logged = is_login;
+    };
+
+    $scope.username = "";
+    $scope.cid = 0;
 });
 
 

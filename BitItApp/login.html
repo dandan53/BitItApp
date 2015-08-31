@@ -1,44 +1,68 @@
 ﻿<div ng-controller="LoginCtrl">
     
-    <h2>כניסה לרשומים</h2>
+    <div data-ng-show="!is_logged">
+        
+        <h2 class="h">כניסה לרשומים</h2>
 
-    <form name="form" class="form-horizontal">
-        <div class="control-group" ng-class="{error: form.Text.$invalid}">
-            <input type="text" ng-model="item.Mail" id="Mail" name="Mail" placeholder="כתובת מייל">
-        </div>
-        <div class="control-group" ng-class="{error: form.Priority.$invalid}">
-            <input type="password" ng-model="item.Password" id="Password" name="Password" placeholder="סיסמה">
-        </div>
+        <form name="form" class="form-horizontal">
+            <div class="control-group" ng-class="{error: form.Text.$invalid}">
+                <input type="text" ng-model="item.Mail" id="Mail" name="Mail" placeholder="כתובת מייל">
+            </div>
+            <div class="control-group" ng-class="{error: form.Priority.$invalid}">
+                <input type="password" ng-model="item.Password" id="Password" name="Password" placeholder="סיסמה">
+            </div>
+        
+            <br/>
 
-        <div class="form-actions">
-            <button ng-click="login()" class="btn btn-primary">
-                כניסה
-            </button>
-        </div>
-    </form>
+            <div class="form-actions">
+                <button ng-click="login()" class="btn btn-primary">
+                    כניסה
+                </button>
+            </div>
+        </form>
 
-    <table style="margin:10px">
+        <table style="margin:10px">
             <tbody>
                 <tr>
                     <td>
                         <a href="#/signup" class="btn"  style="margin:10px; background-color: #ffffff">הרשמה</a>
                     </td>
                     <td>
-                        <a href="" ng-click="toggle_forget_password()" class="btn" style="margin:10px; background-color: #ffffff">שכחתי סיסמה</a>
+                    <a href="" ng-click="toggle_forget_password()" class="btn" style="margin:10px; background-color: #ffffff">שכחתי סיסמה</a>
                 </tr>
-           </tbody>
-    </table>
+            </tbody>
+        </table>
 
-    <form ng-show="show_forget_password()" name="form" class="form-horizontal">
-        הזן את כתובת המייל שלך והסיסמא תישלח לשם
-        <div class="control-group" ng-class="{error: form.Text.$invalid}">
-            <input type="text" ng-model="item.ForgetMail" id="ForgetMail" name="Mail" placeholder="כתובת מייל">
-        </div>
+        <form ng-show="show_forget_password()" name="form" class="form-horizontal">
+            הזן את כתובת המייל שלך והסיסמא תישלח לשם
+            <br/>
+            <div class="control-group" ng-class="{error: form.Text.$invalid}">
+                <input type="text" ng-model="item.ForgetMail" id="ForgetMail" name="Mail" placeholder="כתובת מייל">
+            </div>
    
+            <br/>
+
+            <div class="form-actions">
+                <button ng-click="sendMail()" class="btn btn-primary">
+                    שלח
+                </button>
+            </div>
+        </form>
+
+    </div>
+    
+    <div data-ng-show="is_logged">
+        
+        <h2 class="h">שלום {{username}} </h2>
+        
+        <br/>
+
         <div class="form-actions">
-            <button ng-click="sendMail()" class="btn btn-primary">
-                שלח
+            <button ng-click="logout()" class="btn btn-primary">
+                יציאה
             </button>
         </div>
-    </form>
+
+    </div>
+   
 </div>
