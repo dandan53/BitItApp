@@ -23,11 +23,10 @@
     // I load the remote data from the server.
 
     function loadRemoteData(data) {
-        if (data != null && data.User != null) {
-            $scope.username = data.User.Username;
-            $scope.is_logged_in(true);
+        if (data != null && data.IsSuccess == true) {
+            alert('הסיסמה נשלחה בהצלחה למייל שלך');
         } else {
-            alert('שם משתמש או סיסמא אינם נכונים');
+            alert('נא נסה שנית');
         }
     };
 

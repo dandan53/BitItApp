@@ -44,8 +44,6 @@ namespace BitItApp.Controllers
                 /*WE use smtp sever we specified above to send the message(MailMessage message)*/
 
                 smtp.Send(message);
-                Console.WriteLine("Message Sent Successfully");
-                Console.ReadKey();
             }
             catch (Exception ex)
             {
