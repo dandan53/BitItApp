@@ -1,7 +1,7 @@
-﻿app.controller('ForgetPasswordCtrl', function ($scope, $location, $routeParams, ForgetPasswordService) {
-   
-    $scope.forgetPassword = function () {
+﻿app.controller('ForgetPasswordCtrl', function ($scope, $location, $routeParams, ForgetPasswordService, Data) {
+    $scope.Data = Data;
 
+    $scope.forgetPassword = function () {
         if ($scope.user.email != "") {
             var user = {
                 email: $scope.user.email
@@ -24,6 +24,7 @@
 
     function loadRemoteData(data) {
         if (data != null && data.IsSuccess == true) {
+            $scope.Data.isForgetPassword = false;
             alert('הסיסמה נשלחה בהצלחה למייל שלך');
         } else {
             alert('נא נסה שנית');

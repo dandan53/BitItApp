@@ -18,7 +18,9 @@ app.factory('Login', function ($resource) {
     return $resource('/api/login', { id: '@id' }, { update: { method: 'PUT' } });
 });
 
-
+app.factory('Data', function () {
+   return { isForgetPassword: false };
+});
 
 //***************** main ************************//
 

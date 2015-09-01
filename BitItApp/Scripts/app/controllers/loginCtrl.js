@@ -1,12 +1,9 @@
-﻿app.controller('LoginCtrl', function ($scope, $location, $routeParams, LoginService) {
-    $scope.forgetPassword = false;
+﻿app.controller('LoginCtrl', function ($scope, $location, $routeParams, LoginService, Data) {
+    $scope.Data = Data;
+    //$scope.isForgetPassword = false;
 
     $scope.toggle_forget_password = function () {
-        $scope.forgetPassword = !$scope.forgetPassword;
-    };
-
-    $scope.show_forget_password = function () {
-        return $scope.forgetPassword;
+        $scope.Data.isForgetPassword = !$scope.Data.isForgetPassword;
     };
 
     $scope.login = function () {

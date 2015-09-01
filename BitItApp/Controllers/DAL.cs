@@ -705,7 +705,7 @@ namespace BitItApp.Controllers
 
         public User GetUserByEmail(string email)
         {
-            User result = Users.Find(user => user.Email.Equals(email));
+            User result = Users.Find(user => user.Email.Equals(email.ToLower()));
             return result;
         }
 
@@ -747,7 +747,7 @@ namespace BitItApp.Controllers
                     CID = CreateUserCId(),
                     Username = registerRequest.Username,
                     Password = registerRequest.Password,
-                    Email = registerRequest.Email
+                    Email = registerRequest.Email.ToLower()
                 };
 
                 Users.Add(user);
