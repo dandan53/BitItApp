@@ -34,19 +34,24 @@
         </table>
 
         <form ng-show="show_forget_password()" name="form" class="form-horizontal">
-            הזן את כתובת המייל שלך והסיסמא תישלח לשם
-            <br/>
-            <div class="control-group" ng-class="{error: form.Text.$invalid}">
-                <input type="text" ng-model="item.ForgetMail" id="ForgetMail" name="Mail" placeholder="כתובת מייל">
-            </div>
+            <div data-ng-controller="ForgetPasswordCtrl">
+                
+                 הזן את כתובת המייל שלך והסיסמא תישלח לשם
+                <br/>
+                <div class="control-group" ng-class="{error: form.Text.$invalid}">
+                    <input type="text" ng-model="user.email" id="ForgetMail" name="Mail" placeholder="כתובת מייל">
+                </div>
    
-            <br/>
+                <br/>
 
-            <div class="form-actions">
-                <button ng-click="sendMail()" class="btn btn-primary">
-                    שלח
-                </button>
+                <div class="form-actions">
+                    <button ng-click=" forgetPassword()" class="btn btn-primary">
+                        שלח
+                    </button>
+                </div>
+
             </div>
+           
         </form>
 
     </div>

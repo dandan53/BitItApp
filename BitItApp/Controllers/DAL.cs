@@ -703,6 +703,12 @@ namespace BitItApp.Controllers
             return result;
         }
 
+        public User GetUserByEmail(string email)
+        {
+            User result = Users.Find(user => user.Email.Equals(email));
+            return result;
+        }
+
         private static void InitUsers()
         {
             Users = new List<User>();
