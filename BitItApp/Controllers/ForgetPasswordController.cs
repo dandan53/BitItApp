@@ -19,7 +19,10 @@ namespace BitItApp.Controllers
                 var user = DAL.Instance.GetUserByEmail(request.Email);
                 if (user != null)
                 {
-                    retVal.IsSuccess = EmailSender.SendForgetPasswordEmail(user.Email, user.Password);
+                    const string subject = "שחזור סיסמה";
+                    string body = "הסיסמה שלך הינה: " + user.Password;
+                    
+                    retVal.IsSuccess = EmailSender.SendMail(user.Email, subject, body);
                 }
             }
 

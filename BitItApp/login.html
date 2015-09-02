@@ -1,6 +1,6 @@
 ﻿<div ng-controller="LoginCtrl">
     
-    <div data-ng-show="!is_logged">
+    <div data-ng-show="!isLoggedIn()">
         
         <h2 class="h">כניסה לרשומים</h2>
 
@@ -56,9 +56,9 @@
 
     </div>
     
-    <div data-ng-show="is_logged">
+    <div data-ng-show="isLoggedIn()">
         
-        <h2 class="h">שלום {{username}} </h2>
+        <h2 class="h">שלום {{user.username}} </h2>
         
         <br/>
 

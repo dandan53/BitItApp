@@ -1,4 +1,5 @@
-﻿app.controller('NewbidCtrl', function ($scope, $location, $routeParams, Login, bidService) {
+﻿app.controller('NewbidCtrl', function ($scope, $location, $routeParams, Login, bidService, UserData) {
+    $scope.user = UserData;
 
     $scope.options = getCategories();
     $scope.selectedOption = $scope.options[0];
@@ -24,33 +25,38 @@
 
     $scope.add_bid = function () {
 
-        var product_name = $scope.selectedProduct.name;
-        if (product_name === 'הכל') {
-            alert('נא בחר מוצר');
+        if ($scope.isLoggedIn()) {
+            var product_name = $scope.selectedProduct.name;
+            if (product_name === 'הכל') {
+                alert('נא בחר מוצר');
+            }
+            else {
+                var newBid = {
+                    CategoryId: $scope.selectedOption.id,
+                    Category: $scope.selectedOption.name,
+                    SubCategoryId: $scope.selectedSubOption.id,
+                    SubCategory: $scope.selectedSubOption.name,
+                    Product: $scope.selectedProduct.name,
+                    ProductId: $scope.selectedProduct.id,
+                    DueDate: $scope.dueDate,
+                    Amount: $scope.amount
+                };
+
+                bidService.addBid(newBid)
+                                .then(
+                                    loadRemoteData,
+                                    function (errorMessage) {
+
+                                        console.warn(errorMessage);
+
+                                    }
+                                );
+
+            }
+        } else {
+            alert('יש להיכנס למערכת');
         }
-        else {
-            var newBid = {
-                CategoryId: $scope.selectedOption.id,
-                Category: $scope.selectedOption.name,
-                SubCategoryId: $scope.selectedSubOption.id,
-                SubCategory: $scope.selectedSubOption.name,
-                Product: $scope.selectedProduct.name,
-                ProductId: $scope.selectedProduct.id,
-                DueDate: $scope.dueDate,
-                Amount: $scope.amount
-            };
-
-            bidService.addBid(newBid)
-                            .then(
-                                loadRemoteData,
-                                function (errorMessage) {
-
-                                    console.warn(errorMessage);
-
-                                }
-                            );
-
-        }
+        
     };
 
     // I load the remote data from the server.
@@ -59,5 +65,12 @@
         $location.url('/');
     };
 
+    $scope.isLoggedIn = function () {
+        if ($scope.user != null && $scope.user.CID != 0) {
+            return true;
+        } else {
+            return false;
+        }
+    };
 
 });

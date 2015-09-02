@@ -28,7 +28,11 @@ th.pad, td.pad { padding: 100px; }
             <td>
                 <div>
                     
-                    <a href="#/newbid" class="btn">הוסף מכרז חדש</a>
+                    <!--<a href="#/newbid" class="btn">הוסף מכרז חדש</a> -->
+                    
+                    <button class="btn btn-success" ng-disabled="error || incomplete" ng-click="newBid()">
+                            <span class="glyphicon glyphicon-save"></span> הוסף מכרז חדש
+                    </button>
 
                     <!--<button class="btn" href="#/newbid">
                             <span class="glyphicon glyphicon-pencil"></span>  Add New Bid

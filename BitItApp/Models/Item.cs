@@ -9,7 +9,7 @@ namespace BitItApp.Models
     {
         public int Id { get; set; }
         public string Text { get; set; }
-        public DateTime? DueDate { get; set; }
+        public DateTime DueDate { get; set; }
         public string Category { get; set; }
         public int CategoryId { get; set; }
         public string SubCategory { get; set; }
@@ -20,10 +20,16 @@ namespace BitItApp.Models
         public decimal FirstPrice { get; set; }
         public decimal SecondPrice { get; set; }
         public decimal ThirdPrice { get; set; }
-        public int AskId { get; set; }
-        public int FirstBidId { get; set; }
-        public int SecondBidId { get; set; }
-        public int ThirdBidId { get; set; }
+
+        public User BidUser { get; set; }
+        public User FirstAskUser { get; set; }
+        public User SecondAskUser { get; set; }
+        public User ThirdAskUser { get; set; }
+
+        //public int BidId { get; set; }
+        //public int FirstAskId { get; set; }
+        //public int SecondAskId { get; set; }
+        //public int ThirdAskId { get; set; }
 
         public decimal NewPrice { get; set; }
         public string FirstPriceDisplay { get; set; }

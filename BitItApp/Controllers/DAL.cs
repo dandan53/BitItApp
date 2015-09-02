@@ -713,25 +713,58 @@ namespace BitItApp.Controllers
         {
             Users = new List<User>();
 
+            // Ask
             User user1 = new User()
             {
                 Username = "dan",
                 Password = "1",
                 Email = "dandan53@gmail.com",
-                CID = 1
+                CID = 1,
+                AsksList = new List<Item>()
             };
 
             Users.Add(user1);
             
+            // Ask
             User user2 = new User()
             {
                 Username = "carmi",
                 Password = "2",
                 Email = "carmilaks@gmail.com",
-                CID = 2
+                CID = 2,
+                AsksList = new List<Item>()
             };
 
             Users.Add(user2);
+
+            // Bid
+            User user3 = new User()
+            {
+                Username = "chen",
+                Password = "3",
+                Email = "chenvardi9@gmail.com",
+                CID = 3,
+                BidsList = new List<Item>()
+            };
+
+            Users.Add(user3);
+
+            var i = 0;
+            var items = DAL.instance.GetItems();
+            foreach (var item in items)
+            {
+                i++;
+                if (i % 2 == 0)
+                {
+                    user2.AsksList.Add(item);
+                }
+                else
+                {
+                    user1.AsksList.Add(item);
+                }
+
+                item.FirstAskUser = user3;
+            }
         }
 
 

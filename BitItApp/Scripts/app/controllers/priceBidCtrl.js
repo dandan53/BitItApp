@@ -1,5 +1,5 @@
-﻿app.controller('PricebidCtrl', function ($scope, $location, $routeParams, Login, bidService) {
-
+﻿app.controller('PricebidCtrl', function ($scope, $location, $routeParams, Login, bidService, UserData) {
+    $scope.user = UserData;
 
     $scope.bid_id = $routeParams.id;
 
@@ -27,25 +27,29 @@
 
     $scope.update_bid = function () {
 
-        var price = $scope.price;
-        if (price > 0) {
-            var updatedBid = {
-                Id: $scope.bid_id,
-                NewPrice: price
-            };
+        if ($scope.isLoggedIn()) {
+            var price = $scope.price;
+            if (price > 0) {
+                var updatedBid = {
+                    Id: $scope.bid_id,
+                    NewPrice: price
+                };
 
-            bidService.updateBid(updatedBid)
-                            .then(
-                                loadRemoteData,
-                                function (errorMessage) {
+                bidService.updateBid(updatedBid)
+                    .then(
+                        loadRemoteData,
+                        function(errorMessage) {
 
-                                    console.warn(errorMessage);
+                            console.warn(errorMessage);
 
-                                }
-                            );
+                        }
+                    );
 
+            } else {
+                alert('נא הגש הצעה');
+            }
         } else {
-            alert('נא הגש הצעה');
+            alert('יש להיכנס למערכת');
         }
     };
 
@@ -56,6 +60,13 @@
         $location.url('/');
     };
 
+    $scope.isLoggedIn = function () {
+        if ($scope.user != null && $scope.user.CID != 0) {
+            return true;
+        } else {
+            return false;
+        }
+    };
 
 });
 

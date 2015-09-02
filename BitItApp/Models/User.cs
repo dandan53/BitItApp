@@ -11,5 +11,7 @@ namespace BitItApp.Models
         public string Username { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
+        public List<Item> BidsList { get; set; }
+        public List<Item> AsksList { get; set; }
     }
 }

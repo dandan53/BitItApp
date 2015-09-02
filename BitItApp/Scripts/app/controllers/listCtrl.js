@@ -1,4 +1,14 @@
-﻿app.controller('ListCtrl', function ($scope, $location, Item) {
+﻿app.controller('ListCtrl', function ($scope, $location, Item, UserData) {
+
+    $scope.isLoggedIn = function () {
+        if ($scope.user != null && $scope.user.CID != 0) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+    $scope.user = UserData;
 
     $scope.cl = "row";
 
@@ -105,9 +115,12 @@
     $scope.reset();
 
     $scope.price_bid = function (item) {
-        $location.path('/pricebid/' + item.Id);
+        if ($scope.isLoggedIn()) {
+            $location.path('/pricebid/' + item.Id);
+        } else {
+            alert('יש להיכנס למערכת');
+        }
     };
-
 
     $scope.he = {};
     $scope.he.cat = "קטגוריה";

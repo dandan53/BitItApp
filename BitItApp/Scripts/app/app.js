@@ -22,11 +22,13 @@ app.factory('Data', function () {
    return { isForgetPassword: false };
 });
 
-//***************** main ************************//
-
-app.controller('MainCtrl', function ($scope) {
-
+app.factory('UserData', function () {
+    return {
+        username: "",
+        CID: 0
+    };
 });
+
 
 ///////// Resources /////////
 

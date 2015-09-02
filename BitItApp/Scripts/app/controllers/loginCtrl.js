@@ -1,4 +1,4 @@
-﻿app.controller('LoginCtrl', function ($scope, $location, $routeParams, LoginService, Data) {
+﻿app.controller('LoginCtrl', function ($scope, $location, $routeParams, LoginService, Data, UserData) {
     $scope.Data = Data;
     //$scope.isForgetPassword = false;
 
@@ -31,8 +31,10 @@
 
     function loadRemoteData(data) {
         if (data != null && data.User != null) {
-            $scope.username = data.User.Username;
-            $scope.is_logged_in(true);
+            $scope.user.username = data.User.Username;
+            $scope.user.CID = data.User.CID;
+            
+            //$scope.is_logged_in(true);
         } else {
             alert('שם משתמש או סיסמא אינם נכונים');
         }
@@ -53,8 +55,10 @@
     //};
 
     $scope.logout = function () {
-        $scope.username = "";
-        $scope.is_logged_in(false);
+        $scope.user.username = "";
+        $scope.user.CID = 0;
+
+        //$scope.is_logged_in(false);
 
         //Login.save({
         //    Username: $scope.item.Mail,
@@ -69,11 +73,19 @@
     $scope.cred.username = "";
     $scope.cred.password = "";
 
-    $scope.is_logged = false;
+    //$scope.is_logged = false;
 
-    $scope.is_logged_in = function (is_login) {
-        $scope.is_logged = is_login;
+    //$scope.is_logged_in = function (is_login) {
+    //    $scope.is_logged = is_login;
+    //};
+
+    $scope.isLoggedIn = function () {
+        if ($scope.user != null && $scope.user.CID != 0) {
+            return true;
+        } else {
+            return false;
+        }
     };
 
-    $scope.username = "";
+    $scope.user = UserData;
 });

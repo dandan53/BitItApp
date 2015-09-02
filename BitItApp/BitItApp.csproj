@@ -146,6 +146,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BidDueDateManager.cs" />
     <Compile Include="Controllers\DAL.cs" />
     <Compile Include="Controllers\EmailSender.cs" />
     <Compile Include="Controllers\ForgetPasswordController.cs" />
@@ -240,6 +241,7 @@
     <Content Include="newbid.html" />
     <Content Include="pix\bid.jpg" />
     <Content Include="pricebid.html" />
+    <Content Include="Scripts\app\controllers\mainCtrl.js" />
     <Content Include="Scripts\files\angular-animate.js" />
     <Content Include="Scripts\files\angular-animate.min.js" />
     <Content Include="Scripts\files\angular-aria.js" />
