@@ -33,7 +33,8 @@
                 ProductId: item.ProductId,
                 Product: item.Product,
                 DueDate: item.DueDate,
-                Amount: item.Amount
+                Amount: item.Amount,
+                BidCID: item.BidCID
             }
         });
 
@@ -52,7 +53,8 @@
             data:
             {
                 Id: item.Id,
-                NewPrice: item.NewPrice
+                NewPrice: item.NewPrice,
+                NewAskCID: item.NewAskCID
             }
         });
 

@@ -39,7 +39,8 @@
                     Product: $scope.selectedProduct.name,
                     ProductId: $scope.selectedProduct.id,
                     DueDate: $scope.dueDate,
-                    Amount: $scope.amount
+                    Amount: $scope.amount,
+                    BidCID: $scope.user.CID
                 };
 
                 bidService.addBid(newBid)

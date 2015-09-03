@@ -26,12 +26,13 @@ namespace BitItApp.Models
         public User SecondAskUser { get; set; }
         public User ThirdAskUser { get; set; }
 
-        //public int BidId { get; set; }
-        //public int FirstAskId { get; set; }
-        //public int SecondAskId { get; set; }
-        //public int ThirdAskId { get; set; }
+        public int BidCID { get; set; }
+        public int FirstAskCID { get; set; }
+        public int SecondAskCID { get; set; }
+        public int ThirdAskCID { get; set; }
 
         public decimal NewPrice { get; set; }
+        public int NewAskCID { get; set; }
         public string FirstPriceDisplay { get; set; }
     }
 }

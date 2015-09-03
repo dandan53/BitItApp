@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using BitItApp.Controllers;
 
 namespace BitItApp
 {
@@ -22,6 +24,26 @@ namespace BitItApp
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            InitApp();
+        }
+
+        private BidDueDateManager BidDueDateManager;
+        
+        private void InitApp()
+        {
+            try
+            {
+                //Debugger.Break();
+                
+                DAL.Instance.Init();
+
+                BidDueDateManager = new BidDueDateManager();
+                BidDueDateManager.Init();
+            }
+            catch (Exception ex)
+            {
+            }
         }
     }
 }

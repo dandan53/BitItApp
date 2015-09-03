@@ -15,6 +15,11 @@ namespace BitItApp.Controllers
         {
             Timer = null;
 
+            //Init();
+        }
+
+        public void Init()
+        {
             InitTimer();
         }
 
@@ -24,7 +29,7 @@ namespace BitItApp.Controllers
             {
                 //int Interval = Convert.ToInt32(ConfigurationManager.AppSettings["MessageTimerIntervalInSec"]);
 
-                int interval = 1;
+                const int interval = 20;
 
                 Timer = new Timer();
 
@@ -58,10 +63,19 @@ namespace BitItApp.Controllers
 
                 foreach (var item in itemsToRmove)
                 {
+                    string mailSubject = "המכרז הסתיים";
+                    string mailBody = "שלום " + item.BidUser.Username;
+                    mailBody += ", \r\n";
+                    mailBody += "מכרז מספר " + item.Id + " הסתיים";
+                    mailBody += ". \r\n";
+                    mailBody += "המחיר הטוב ביותר: " + item.FirstPrice;
+                    
                     // Sending an email
-                    //EmailSender.SendMail(item.)
-
-                    items.Remove(item);
+                    var isMailSent = EmailSender.SendMail(item.BidUser.Email, mailSubject, mailBody);
+                    if (isMailSent)
+                    {
+                        items.Remove(item);                        
+                    }
                 }
             }
             catch (Exception ex)

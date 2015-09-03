@@ -8,6 +8,12 @@ namespace BitItApp.Controllers
 {
     public sealed class DAL
     {
+        
+        private Dictionary<int, List<Item>> CIDToBidsListDic = new Dictionary<int, List<Item>>();
+
+        private Dictionary<int, List<Item>> CIDToAsksListDic = new Dictionary<int, List<Item>>();
+
+
         private static DAL instance = null;
 
         private DAL()
@@ -22,7 +28,7 @@ namespace BitItApp.Controllers
                 {
                     instance = new DAL();
 
-                    Init();
+                    //Init();
                 }
                 return instance;
             }
@@ -41,39 +47,77 @@ namespace BitItApp.Controllers
 
         public void AddItem(Item item)
         {
-            item.Id = CreateItemId();
-            item.FirstPriceDisplay = "--";
-            Items.Add(item);
+             User user = GetUserByCID(item.BidCID);
+            if (user != null)
+            {
+                item.Id = CreateItemId();
+                item.BidUser = user;
+                item.FirstPriceDisplay = "--";
+                Items.Add(item);
+            }
         }
 
 
         public void UpdateItem(Item item)
         {
-            Item updatedItem = GetItem(item.Id);
-            if (updatedItem != null)
+            try
             {
-                if (updatedItem.FirstPrice == 0 || item.NewPrice < updatedItem.FirstPrice)
+                User user = GetUserByCID(item.NewAskCID);
+                Item updatedItem = GetItem(item.Id);
+                if (updatedItem != null && user != null)
                 {
-                    updatedItem.FirstPrice = item.NewPrice;
-                    updatedItem.FirstPriceDisplay = item.NewPrice.ToString();
+                    if (updatedItem.FirstPrice == 0 || item.NewPrice < updatedItem.FirstPrice)
+                    {
+                        updatedItem.FirstPrice = item.NewPrice;
+                        updatedItem.FirstPriceDisplay = item.NewPrice.ToString();
+                        //updatedItem.FirstAskUser = user;
+                    }
+                    else if (updatedItem.SecondPrice == 0 || item.NewPrice < updatedItem.SecondPrice)
+                    {
+                        updatedItem.SecondPrice = item.NewPrice;
+                        updatedItem.FirstPriceDisplay = item.NewPrice.ToString();
+                        //updatedItem.SecondAskUser = user;
+                    }
+                    else if (updatedItem.ThirdPrice == 0 || item.NewPrice < updatedItem.ThirdPrice)
+                    {
+                        updatedItem.ThirdPrice = item.NewPrice;
+                        updatedItem.FirstPriceDisplay = item.NewPrice.ToString();
+                        //updatedItem.ThirdAskUser = user;
+                    }
+
+                    if (!CIDToAsksListDic.ContainsKey(user.CID))
+                    {
+                        CIDToAsksListDic.Add(user.CID, new List<Item>());
+                    }
+
+                    if (CIDToAsksListDic[user.CID] == null)
+                    {
+                        CIDToAsksListDic[user.CID] = new List<Item>();
+                    }
+
+                    CIDToAsksListDic[user.CID].Add(updatedItem);
                 }
-                else if (updatedItem.SecondPrice == 0 || item.NewPrice < updatedItem.SecondPrice)
-                {
-                    updatedItem.SecondPrice = item.NewPrice;
-                    updatedItem.FirstPriceDisplay = item.NewPrice.ToString();
-                }
-                else if (updatedItem.ThirdPrice == 0 || item.NewPrice < updatedItem.ThirdPrice)
-                {
-                    updatedItem.ThirdPrice = item.NewPrice;
-                    updatedItem.FirstPriceDisplay = item.NewPrice.ToString();
-                }
+            }
+            catch (Exception exception)
+            {
+                var ex = exception.ToString();
             }
         }
 
         public Item GetItem(int id)
         {
             //IEnumerable<Item> results = Items.Where(i => i.Id.Equals(id));
-            Item result = Items.First(item => item.Id == id);
+
+            Item result = null;
+
+            try
+            {
+                result = Items.First(item => item.Id == id);
+            }
+            catch (Exception)
+            {
+            }
+
             return result;
         }
 
@@ -85,7 +129,7 @@ namespace BitItApp.Controllers
             return retVal;
         }
 
-        private static void Init()
+        public void Init()
         {
             InitItems();
 
@@ -186,7 +230,7 @@ namespace BitItApp.Controllers
                 Amount = 12,
                 Category = "ריהוט",
                 CategoryId = 3,
-                DueDate = DateTime.Now.AddDays(2),
+                DueDate = DateTime.Now.AddDays(-1),
                 FirstPrice = 10,
                 Id = 6,
                 Product = "כסא בר",
@@ -203,7 +247,7 @@ namespace BitItApp.Controllers
                 Amount = 10,
                 Category = "מוצרי חשמל",
                 CategoryId = 2,
-                DueDate = DateTime.Now.AddDays(1),
+                DueDate = DateTime.Now.AddMinutes(-1),
                 FirstPrice = 1000,
                 Id = 7,
                 Product = "מזגן עילי",
@@ -709,43 +753,52 @@ namespace BitItApp.Controllers
             return result;
         }
 
-        private static void InitUsers()
+        public User GetUserByCID(int CID)
+        {
+            User result = Users.Find(user => user.CID == CID);
+            return result;
+        }
+
+        private void InitUsers()
         {
             Users = new List<User>();
 
-            // Ask
+            // Bid
             User user1 = new User()
             {
                 Username = "dan",
                 Password = "1",
                 Email = "dandan53@gmail.com",
                 CID = 1,
-                AsksList = new List<Item>()
             };
+
+            List<Item> user1BidList = new List<Item>();
 
             Users.Add(user1);
             
-            // Ask
+            // Bid
             User user2 = new User()
             {
                 Username = "carmi",
                 Password = "2",
                 Email = "carmilaks@gmail.com",
                 CID = 2,
-                AsksList = new List<Item>()
             };
+
+            List<Item> user2BidList = new List<Item>();
 
             Users.Add(user2);
 
-            // Bid
+            // Ask
             User user3 = new User()
             {
                 Username = "chen",
                 Password = "3",
                 Email = "chenvardi9@gmail.com",
                 CID = 3,
-                BidsList = new List<Item>()
             };
+
+            List<Item> user3AskList = new List<Item>();
 
             Users.Add(user3);
 
@@ -756,15 +809,22 @@ namespace BitItApp.Controllers
                 i++;
                 if (i % 2 == 0)
                 {
-                    user2.AsksList.Add(item);
+                    item.BidUser = user2;
+                    user2BidList.Add(item);
                 }
                 else
                 {
-                    user1.AsksList.Add(item);
+                    item.BidUser = user1;
+                    user1BidList.Add(item);
                 }
 
                 item.FirstAskUser = user3;
+                user3AskList.Add(item);
             }
+
+            CIDToBidsListDic.Add(user1.CID, user1BidList);
+            CIDToBidsListDic.Add(user2.CID, user2BidList);
+            CIDToAsksListDic.Add(user3.CID, user3AskList);
         }
 
 

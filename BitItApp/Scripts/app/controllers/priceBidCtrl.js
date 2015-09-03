@@ -9,12 +9,9 @@
                         .then(
                             loadData,
                             function (errorMessage) {
-
                                 console.warn(errorMessage);
-
                             }
-                        )
-        ;
+                        );
     };
 
     function loadData(data) {
@@ -32,7 +29,8 @@
             if (price > 0) {
                 var updatedBid = {
                     Id: $scope.bid_id,
-                    NewPrice: price
+                    NewPrice: price,
+                    NewAskCID: $scope.user.CID
                 };
 
                 bidService.updateBid(updatedBid)
