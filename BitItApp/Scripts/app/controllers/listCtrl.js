@@ -1,14 +1,6 @@
-﻿app.controller('ListCtrl', function ($scope, $location, Item, UserData) {
+﻿app.controller('ListCtrl', function ($scope, $location, Item, userDataService) {
 
-    $scope.isLoggedIn = function () {
-        if ($scope.user != null && $scope.user.CID != 0) {
-            return true;
-        } else {
-            return false;
-        }
-    };
-
-    $scope.user = UserData;
+    $scope.user = userDataService.getUserData();
 
     $scope.cl = "row";
 
@@ -115,7 +107,7 @@
     $scope.reset();
 
     $scope.price_bid = function (item) {
-        if ($scope.isLoggedIn()) {
+        if (userDataService.isLoggedIn()) {
             $location.path('/pricebid/' + item.Id);
         } else {
             alert('יש להיכנס למערכת');

@@ -1,6 +1,5 @@
-﻿app.controller('LoginCtrl', function ($scope, $location, $routeParams, LoginService, Data, UserData) {
+﻿app.controller('LoginCtrl', function ($scope, $location, $routeParams, LoginService, Data, userDataService) {
     $scope.Data = Data;
-    //$scope.isForgetPassword = false;
 
     $scope.toggle_forget_password = function () {
         $scope.Data.isForgetPassword = !$scope.Data.isForgetPassword;
@@ -73,19 +72,18 @@
     $scope.cred.username = "";
     $scope.cred.password = "";
 
-    //$scope.is_logged = false;
-
-    //$scope.is_logged_in = function (is_login) {
-    //    $scope.is_logged = is_login;
-    //};
-
-    $scope.isLoggedIn = function () {
-        if ($scope.user != null && $scope.user.CID != 0) {
-            return true;
+    $scope.settings = function () {
+        if (userDataService.isLoggedIn()) {
+            $location.path('/settings/');
         } else {
-            return false;
+            alert('יש להיכנס למערכת');
         }
     };
 
-    $scope.user = UserData;
+    $scope.user = userDataService.getUserData();
+
+    $scope.isLoggedIn = function() {
+        return userDataService.isLoggedIn();
+    };
+
 });

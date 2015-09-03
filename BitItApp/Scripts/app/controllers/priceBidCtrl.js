@@ -1,5 +1,5 @@
-﻿app.controller('PricebidCtrl', function ($scope, $location, $routeParams, Login, bidService, UserData) {
-    $scope.user = UserData;
+﻿app.controller('PricebidCtrl', function ($scope, $location, $routeParams, Login, bidService, userDataService) {
+    $scope.user = userDataService.getUserData();
 
     $scope.bid_id = $routeParams.id;
 
@@ -24,7 +24,7 @@
 
     $scope.update_bid = function () {
 
-        if ($scope.isLoggedIn()) {
+        if (userDataService.isLoggedIn()) {
             var price = $scope.price;
             if (price > 0) {
                 var updatedBid = {
@@ -56,14 +56,6 @@
 
     function loadRemoteData() {
         $location.url('/');
-    };
-
-    $scope.isLoggedIn = function () {
-        if ($scope.user != null && $scope.user.CID != 0) {
-            return true;
-        } else {
-            return false;
-        }
     };
 
 });

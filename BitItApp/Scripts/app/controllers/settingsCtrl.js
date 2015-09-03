@@ -1,4 +1,4 @@
-﻿app.controller('NewbidCtrl', function ($scope, $location, $routeParams, Login, bidService, userDataService) {
+﻿app.controller('SettingsCtrl', function ($scope, $location, $routeParams, Login, bidService, userDataService) {
     $scope.user = userDataService.getUserData();
 
     $scope.options = getCategories();
@@ -57,7 +57,7 @@
         } else {
             alert('יש להיכנס למערכת');
         }
-        
+
     };
 
     // I load the remote data from the server.

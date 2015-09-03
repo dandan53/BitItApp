@@ -229,6 +229,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="settings.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -242,6 +243,9 @@
     <Content Include="pix\bid.jpg" />
     <Content Include="pricebid.html" />
     <Content Include="Scripts\app\controllers\mainCtrl.js" />
+    <Content Include="Scripts\app\controllers\settingsCtrl.js" />
+    <Content Include="Scripts\app\services\settingsService.js" />
+    <Content Include="Scripts\app\services\userDataService.js" />
     <Content Include="Scripts\files\angular-animate.js" />
     <Content Include="Scripts\files\angular-animate.min.js" />
     <Content Include="Scripts\files\angular-aria.js" />

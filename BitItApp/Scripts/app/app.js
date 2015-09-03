@@ -7,6 +7,7 @@ app.config(function ($routeProvider) {
          when('/newbid', { controller: 'NewbidCtrl', templateUrl: 'newbid.html' }).
          when('/pricebid/:id', { controller: 'PricebidCtrl', templateUrl: 'pricebid.html' }).
          when('/signup', { controller: 'SignupCtrl', templateUrl: 'signup.html' }).
+         when('/settings', { controller: 'SettingsCtrl', templateUrl: 'settings.html' }).
          otherwise({ redirectTo: '/' });
 });
 
@@ -21,14 +22,6 @@ app.factory('Login', function ($resource) {
 app.factory('Data', function () {
    return { isForgetPassword: false };
 });
-
-app.factory('UserData', function () {
-    return {
-        username: "",
-        CID: 0
-    };
-});
-
 
 ///////// Resources /////////
 
